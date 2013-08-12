@@ -6,7 +6,7 @@ function Ajax(url, data, callback, method, async) {
     'use strict';
     this.url       = url      || '';
     this.data      = data     || '';
-    this.callback  = callback || function () {};
+    this.callback  = callback || function (data) {return data; };
     this.method    = method   || 'POST';
     this.async     = async    || true;
     this.factories = [//good idea quirksmode.org
@@ -46,8 +46,6 @@ Ajax.prototype.object = function () {//function that will transform itself to an
     }
     if (xmlhttp !== null) {
         return xmlhttp;
-    } else {
-        return false;
     }
 };
 Ajax.prototype.update = function () {
