@@ -1,4 +1,4 @@
-/*global console, Ajax, asreq1, asreq2, asreq3*/
+/*global document, console, Ajax, asreq1, asreq2, asreq3*/
 var site = {};
 function set_site(data) {
     'use strict';
@@ -17,6 +17,6 @@ siteAjax[1] = new Ajax('json/asynreq1.json', '', asreq1);
 siteAjax[1].update();
 siteAjax[2] = new Ajax('json/asynreq2.json', '', asreq2);
 siteAjax[2].update();
-siteAjax[3] = new Ajax('json/asynreq3.json', '', asreq3);
-siteAjax[3].update();
+siteAjax[3] = new Ajax('somephp.php', '', asreq3);
+siteAjax[3].update('type=main&lang=' + document.getElementById('currentlang').value + '&page=' + document.getElementById('currentpage').value + '&content=' + encodeURIComponent(document.getElementById('main').innerHTML));
 
