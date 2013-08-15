@@ -4,12 +4,12 @@
 /**************************************/
 function Ajax(url, data, callback, method, async) {
     'use strict';
-    this.url = url || '';
-    this.data = data || '';
-    this.callback = callback || function (data) {return data; };
-    this.method = method || 'POST';
-    this.async = async || true;
-    this.factories = [//good idea quirksmode.org
+    this.url       = url      || '';
+    this.data      = data     || '';
+    this.callback  = callback || function (data) {return data; };
+    this.method    = method   || 'POST';
+    this.async     = async    || true;
+    this.factories = [//I took this from quirksmode.org
         function () {return new XMLHttpRequest(); },
         function () {return new ActiveXObject("Msxml2.XMLHTTP"); },
         function () {return new ActiveXObject("Msxml3.XMLHTTP"); },
@@ -21,7 +21,7 @@ Ajax.prototype.object = function () {//function that will transform itself to an
     var xmlhttp, i, errFound, that;
     that = this;
     xmlhttp = false;
-    for (i = 0; i < this.factories.length; i = i + 1) {//thank you quirksmode.org; keep up being awesome!
+    for (i = 0; i < this.factories.length; i = i + 1) {//also quirksmode.org
         errFound = false;
         try {
             xmlhttp = this.factories[i]();
