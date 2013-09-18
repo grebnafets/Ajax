@@ -55,17 +55,28 @@ Ajax.prototype.update = function (data) {
         this.object = this.object();//change it from function to object
     }
     if (typeof this.object === 'object') {
-        this.object.open(this.method, this.url, this.async);
         if (data !== undefined || data !== null) {
-            this.object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            this.object.send(data);
+            if (this.method === 'post' || this.method === 'POST') {
+                this.object.open(this.method, this.url, this.async);
+                this.object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                this.object.send(data);
+            } else if (this.method === 'get' || this.method === 'GET') {
+                this.object.open(this.method, this.url + data, this.async);
+                this.object.send(null);
+            }
             success = true;
         } else if (this.data !== '') {
-            this.object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-            this.object.send(this.data);
+            if (this.method === 'post' || this.method === 'POST') {
+                this.object.open(this.method, this.url, this.async);
+                this.object.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                this.object.send(this.data);
+            } else if (this.method === 'get' || this.method === 'GET') {
+                this.object.open(this.method, this.url + this.data, this.async);
+                this.object.send(null);
+            }
             success = true;
         } else {
-            this.object.send();
+            this.object.send(null);
             success = true;
         }
     }
