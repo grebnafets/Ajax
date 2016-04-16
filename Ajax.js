@@ -2,7 +2,7 @@
 /* exported Ajax */
 function Ajax(config) {
 	'use strict';
-	var Ajax = {};
+	var Ajax = this;
 	Ajax.url       = config.url      || "";
 	Ajax.head      = config.head     || [];
 	Ajax.method    = config.method   || "POST";
