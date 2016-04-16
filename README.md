@@ -1,4 +1,4 @@
 Ajax
 ====
 
-This is just a simple Ajax Class that I created by imitate solutions provided by quirksmode.org
+This is untested, but is simple enough as a template for later use.
